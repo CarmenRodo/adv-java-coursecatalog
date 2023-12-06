@@ -1,20 +1,12 @@
 package lab1;
 
-/**
- * Describe responsibilities here.
- *
- * @Rodolfo your name goes here
- * @version 1.00
- */
-public class IntroJavaCourse extends Course {
+public abstract class Course {
+    public String getCourseName() {
+        return courseName;
+    }
 
-    String courseName;
-    double credits;
-    String prerequisites;
-    private String courseNumber;
-
-    public IntroJavaCourse(String courseName, String courseNumber) {
-        super(courseName, courseNumber);
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getCourseNumber() {
@@ -30,13 +22,21 @@ public class IntroJavaCourse extends Course {
     }
 
     public void setCredits(double credits) {
-        if (credits < 0 || credits > 5.0) {
+        if (credits < 0.5 || credits > 4.0) {
             System.out.println("Error: credits must be in the range 0.5 to 4.0");
             System.exit(0);
         }
-        this.credits = credits; // Set the property directly, not calling the method itself
+        this.credits = credits; // Set the property directly
     }
 
+    public Course(String courseName, String courseNumber) {
+        this.courseName = courseName;
+        this.courseNumber = courseNumber;
+    }
+
+    private String courseName;
+    private String courseNumber;
+    private double credits;
 
     public String getPrerequisites() {
         return prerequisites;
@@ -45,5 +45,8 @@ public class IntroJavaCourse extends Course {
     public void setPrerequisites(String prerequisites) {
         this.prerequisites = prerequisites;
     }
+
+    private String prerequisites;
+
 
 }
